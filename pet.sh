@@ -3,14 +3,9 @@ pets=()
 
 for pet in ${petsnames[@]}
 do  
-    echo "\n" $pet 
+    # echo "\n" $pet 
     js=( $(curl -d '{"name":"'$pet'"}' -H "Content-Type: application/json" -X POST https://petstore.swagger.io/v2/pet | awk -F'[:",]' '{print $4}') )
-    # if  "{$js: -1}" in 7 8 9 then
-    #     pets+=$pet:NULL
-    # else
-    #     pets+=$pet:$js
-    # fi
-    echo "${js: -1}"
+    # echo "${js: -1}"
     case "${js: -1}" in
     7|8|9) 
         pets+=$pet:NULL
